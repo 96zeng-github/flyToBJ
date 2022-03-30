@@ -1,0 +1,16 @@
+package ${package.Service};
+
+import java.util.List;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+
+/**
+ * @author: ${author}
+ * @date: ${date}
+ * @version: V1.0
+ **/
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+
+}
+
+

@@ -1,0 +1,21 @@
+package ${package.ServiceImpl};
+
+import org.springframework.stereotype.Service;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+
+/**
+ * @author: ${author}
+ * @date: ${date}
+ * @version: V1.0
+ **/
+@Slf4j
+@Service
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+
+}
+

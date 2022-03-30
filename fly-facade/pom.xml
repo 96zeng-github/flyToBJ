@@ -13,9 +13,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>fly-facade</name>
     <dependencies>
-        <dependency>
-            <groupId>com.yzsy</groupId>
-            <artifactId>yzsy-common</artifactId>
-        </dependency>
+
     </dependencies>
 </project>

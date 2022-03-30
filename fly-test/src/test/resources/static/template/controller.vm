@@ -1,0 +1,23 @@
+package ${package.Controller};
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @author: ${author}
+ * @date: ${date}
+ * @version: V1.0
+ **/
+@Slf4j
+@RestController
+@RequestMapping("/${table.entityPath}")
+public class ${table.controllerName} {
+
+    @Autowired
+    private ${table.serviceName} ${table.entityPath}Service;
+
+}
+

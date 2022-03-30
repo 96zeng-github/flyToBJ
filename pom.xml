@@ -6,8 +6,91 @@
     <artifactId>fly-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <!-- 版本控制 -->
+    <properties>
+        <!--框架版本控制-->
+        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
+        <mybatis-plus-core.version>3.4.0</mybatis-plus-core.version>
+        <spring-boot.mybatis-plus.version>3.4.0</spring-boot.mybatis-plus.version>
+        <spring-boot.mybatis-plus-generator.version>3.4.0</spring-boot.mybatis-plus-generator.version>
+
+        <!-- 工具版本控制 -->
+        <lombok.version>1.18.12</lombok.version>
+        <commons-lang3.version>3.10</commons-lang3.version>
+        <log4j.version>2.15.0</log4j.version>
+        <velocity-engine-core.version>2.2</velocity-engine-core.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
+            <!-- springboot依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- mybatis-plus依赖 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>${mybatis-plus-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${spring-boot.mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${spring-boot.mybatis-plus-generator.version}</version>
+            </dependency>
+            <!-- 工具 -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- 模板引擎 -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity-engine-core.version}</version>
+            </dependency>
+            <!-- 日志 -->
+            <!--
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-to-slf4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <!--
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-jcl</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            -->
+            <!-- 项目内部依赖 -->
             <dependency>
                 <groupId>com.zeng.fly</groupId>
                 <artifactId>fly-web</artifactId>

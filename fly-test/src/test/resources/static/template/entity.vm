@@ -1,0 +1,78 @@
+package ${package.Entity};
+
+#foreach($pkg in ${table.importPackages})
+import ${pkg};
+#end
+
+import com.baomidou.mybatisplus.annotation.*;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+/**
+ * @author: ${author}
+ * @date: ${date}
+ * @version: V1.0
+ **/
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@TableName("${table.name}")
+public class ${table.entityName} implements Serializable {
+
+    #if(${entitySerialVersionUID})
+    private static final long serialVersionUID = 1L;
+    #end
+## ----------  BEGIN 字段循环遍历  ----------
+#foreach($field in ${table.fields})
+
+    #if(${field.keyFlag})
+        #set($keyPropertyName=${field.propertyName})
+    #end
+    #if("$!field.comment" != "")
+        #if(${swagger2})
+        @ApiModelProperty(value = "${field.comment}")
+        #else
+    /**
+     * ${field.comment}
+     */
+        #end
+    #end
+    #if(${field.keyFlag})
+##        ## 主键
+##        #if(${field.keyIdentityFlag})@TableId(value = "${field.annotationColumnName}", type = IdType.AUTO)
+##        #end
+    @TableId(value = "${field.annotationColumnName}", type = IdType.AUTO)
+    #else 
+	  #if(${field.annotationColumnName} == "version")
+	@Version
+	  #end
+	@TableField("${field.annotationColumnName}")
+    #end
+	private ${field.propertyType} ${field.propertyName};
+#end
+## ----------  END 字段循环遍历  ----------
+
+    /********************* 静态字段 ************************/
+## ----------  BEGIN 字段循环遍历  ----------
+#foreach($field in ${table.fields})
+    #if(${field.keyFlag})
+        #set($keyPropertyName=${field.propertyName})
+    #end
+    #if("$!field.comment" != "")
+        #if(${swagger2})
+        @ApiModelProperty(value = "${field.comment}")
+        #else
+    /**
+     * ${field.comment}
+     */
+        #end
+    #end
+    public static final String ${field.annotationColumnName.toUpperCase()} = "${field.annotationColumnName}";
+#end
+## ----------  END 字段循环遍历  ----------
+
+}
