@@ -1,0 +1,11 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: fly
+  profiles:
+    active: dev
+mybatis-plus:
+  mapper-locations: classpath:com/yzsy/zeng/dal/**/mapper/*.xml
+
+# bootstrap必须和spring cloud才能生效

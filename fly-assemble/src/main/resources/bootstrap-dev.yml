@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    hikari:
+      auto-commit: true
+      connection-test-query: SELECT 1
+      connection-timeout: 30000
+      idle-timeout: 180000
+      max-lifetime: 1800000
+      maximum-pool-size: 16
+      minimum-idle: 1
+      pool-name: HikariPool
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/yzsy_goods?useSSL=false&useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: 123456789
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: dev
+        group: fly
+        enabled: true
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: dev
+        group: fly
+        file-extension: properties
+
+dubbo:
+  scan:
+    base-packages: com.zeng.fly.biz
+  protocol:
+    name: dubbo
+    port: 22001
+  registry:
+    address: nacos://127.0.0.1:8848
+    parameters[namespace]: dev
+    check: false #关闭注册中心启动时检查 (注册订阅失败时报错)
+  consumer:
+    check: false #关闭所有服务的启动时检查 (没有提供者时报错)
+    timeout: 30000 #超时时长，单位：毫秒
+    retries: 0 #集群容错模式默认为Failover（失败自动切换重试其它服务器），重试次数默认为：2
+  cloud:
+    subscribed-services:
