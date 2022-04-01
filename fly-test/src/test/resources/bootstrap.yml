@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: fly-test
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: dev
+        group: fly-test
+        enabled: true
+      config:
+        server-addr: 127.0.0.1:8848
+        namespace: dev
+        group: fly-test
+        file-extension: properties
+
+# Dubbo服务配置
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+    parameters[namespace]: dev
+    check: false #关闭注册中心启动时检查 (注册订阅失败时报错)
+  consumer:
+    check: false #关闭所有服务的启动时检查 (没有提供者时报错)
+    timeout: 30000 #超时时长，单位：毫秒
+    retries: 0 #集群容错模式默认为Failover（失败自动切换重试其它服务器），重试次数默认为：2
+  cloud:
+    subscribed-services:
