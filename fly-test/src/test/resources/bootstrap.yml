@@ -15,7 +15,10 @@ spring:
         namespace: dev
         group: fly-test
         file-extension: properties
-
+  redis:
+    host: 127.0.0.1
+    database: 15
+    port: 6379
 # Dubbo服务配置
 dubbo:
   registry:

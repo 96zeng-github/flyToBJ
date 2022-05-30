@@ -10,10 +10,18 @@ spring:
       minimum-idle: 1
       pool-name: HikariPool
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://127.0.0.1:3306/yzsy_goods?useSSL=false&useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    url: jdbc:mysql://139.9.101.120:3306/yzsy_goods?useSSL=false&useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE&serverTimezone=Asia/Shanghai&allowMultiQueries=true
     username: root
-    password: 123456789
-
+    password: as1516116
+  #缓存
+  cache:
+    type: redis
+  redis:
+    host: 127.0.0.1
+    database: 15
+    port: 6379
+    #password:
+  #spring cloud
   cloud:
     nacos:
       discovery:

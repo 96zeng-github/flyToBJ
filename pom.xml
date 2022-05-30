@@ -16,11 +16,17 @@
         <spring-boot.mybatis-plus-generator.version>3.4.0</spring-boot.mybatis-plus-generator.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.plugin.version>3.8.1</maven.plugin.version>
         <!-- 工具版本控制 -->
         <lombok.version>1.18.12</lombok.version>
         <commons-lang3.version>3.10</commons-lang3.version>
         <log4j.version>2.15.0</log4j.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
+        <redisson.version>3.13.6</redisson.version>
+        <fastjson.version>1.2.75</fastjson.version>
+        <msgpack.version>0.8.21</msgpack.version>
     </properties>
 
     <dependencyManagement>
@@ -106,6 +112,29 @@
                 <version>${log4j.version}</version>
             </dependency>
             -->
+            <!-- redisson -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            <!-- json -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- msgpack:高效的二进制序列化格式 -->
+            <dependency>
+                <groupId>org.msgpack</groupId>
+                <artifactId>msgpack-core</artifactId>
+                <version>${msgpack.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.msgpack</groupId>
+                <artifactId>jackson-dataformat-msgpack</artifactId>
+                <version>${msgpack.version}</version>
+            </dependency>
             <!-- 项目内部依赖 -->
             <dependency>
                 <groupId>com.zeng.fly</groupId>
@@ -155,6 +184,25 @@
         <module>fly-test</module>
     </modules>
     <build>
+        <pluginManagement>
+            <plugins>
+                <!-- 设置jdk版本 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
+                        <compilerArgs>
+                            <!-- 编译时记录形参真实名称 -->
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <resources>
             <!-- 静态文件扫描 -->
             <resource>
